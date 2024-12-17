@@ -1,0 +1,23 @@
+{
+  "topicFilter": "sensor",
+  "qos": 0,
+  "messages": [
+    {
+      "format": "json",
+      "topic": "sensor",
+      "timestamp": 1732401317150,
+      "payload": {
+        "cantidad_usos": 2,
+        "total_agua_tomada": 8
+      },
+      "qos": 0
+    },
+    {
+      "format": "string",
+      "topic": "sensor",
+      "timestamp": 1732401312984,
+      "payload": "Conexión establecida",
+      "qos": 0
+    }
+  ]
+}

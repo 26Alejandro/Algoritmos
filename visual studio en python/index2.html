@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PURRSPRAY</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #7b4397, #dc2430);
+            color: white;
+        }
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .info-box {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .info-item {
+            font-size: 1.5em;
+            margin: 10px 0;
+        }
+        footer {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            position: absolute;
+            bottom: 10px;
+            padding: 0 20px;
+            font-size: 1em;
+        }
+    </style>
+</head>
+<body>
+    <h1>PURRSPRAY</h1>
+    <div class="info-box">
+        <div class="info-item">Cantidad de usos: <span id="usos"></span></div>
+        <div class="info-item">Cantidad total de agua: <span id="resultado"></span></div>
+    </div>
+
+    <footer>
+        <span>Alejandro Melgarejo Sotelo</span>
+        <span>Engels Ordoñez</span>
+    </footer>
+
+    <script>
+        // Cargar el archivo JSON y obtener la cantidad de usos del primer mensaje con formato JSON
+        fetch('info.json')
+            .then(response => response.json())
+            .then(data => {
+                // Buscar el primer objeto de tipo "json" en la lista de mensajes
+                const primerMensaje = data.messages.find(mensaje => mensaje.format === "json");
+                
+                // Si se encuentra un mensaje válido, obtener "cantidad_usos" y calcular la cantidad total de agua
+                if (primerMensaje && primerMensaje.payload.cantidad_usos) {
+                    const cantidadUsos = primerMensaje.payload.cantidad_usos;
+                    const aguaTotal = 4 * cantidadUsos;
+                    
+                    // Mostrar los valores en los elementos de solo lectura
+                    document.getElementById('usos').textContent = cantidadUsos;
+                    document.getElementById('resultado').textContent = aguaTotal;
+                }
+            })
+            .catch(error => console.error('Error al cargar el archivo JSON:', error));
+    </script>
+</body>
+</html>

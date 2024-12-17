@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PURRSPRAY</title>
+    <style>
+        /* Estilos de fondo */
+        body {
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #7b4397, #dc2430);
+            color: white;
+        }
+
+        /* Estilo del título */
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* Estilos del cuadro de entrada */
+        .input-box {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Estilos de los elementos dentro del cuadro */
+        input[type="number"], button {
+            font-size: 1.2em;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+        }
+
+        /* Estilos del botón */
+        button {
+            background-color: #1e90ff;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #187bcd;
+        }
+
+        /* Resultado */
+        .result {
+            font-size: 1.5em;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>PURRSPRAY</h1>
+    <div class="input-box">
+        <label for="usos">Cantidad de usos:</label><br>
+        <input type="number" id="usos" min="0" placeholder="0">
+        <button onclick="calcularAgua()">Calcular</button>
+        <div id="resultado" class="result"></div>
+    </div>
+
+    <script>
+        function calcularAgua() {
+            const usos = document.getElementById('usos').value;
+            const aguaTotal = 4 * usos;
+            document.getElementById('resultado').innerHTML = `Cantidad total de agua: ${aguaTotal}`;
+        }
+    </script>
+</body>
+</html>
